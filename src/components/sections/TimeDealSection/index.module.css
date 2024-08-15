@@ -1,5 +1,21 @@
 .heading {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 16px 16px 12px 16px;
+  }
+
+  .heading__button {
+    height: 40px;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    font-weight: bold;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    min-width: 120px;
+    overflow-y: auto;
   }

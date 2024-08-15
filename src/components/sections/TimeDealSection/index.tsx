@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import { TimeDealCurrentTab } from "@/components/TimeDealTab/indexCurrent";
-import { TimeDealNextTab } from "@/components/TimeDealTab/indexNext";
+import { TimeDealNextTab } from "@/components/TimeDealTab";
 
 const TimeDealSection = () => {
   const chkHour = () => new Date().getHours();
@@ -39,22 +39,22 @@ const TimeDealSection = () => {
       <div className={styles.heading}>
         {tabs(currentHour) === 2 ? (
           <>
-            <button onClick={() => setActiveTab(1)}>
+            <div className={styles.heading__button} onClick={() => setActiveTab(1)}>
               {parseHour(currentHour)}
-            </button>
-            <button onClick={() => setActiveTab(2)}>
+            </div>
+            <div className={styles.heading__button} onClick={() => setActiveTab(2)}>
               {parseHour(currentHour+1)}
-            </button>
+            </div>
           </>
         ) : (
           tabs(currentHour)
         )}
       </div>
       {activeTab === 1 && (
-        <div><TimeDealCurrentTab tabNumber={activeTab} time={currentHour} /></div>
+        <div className={styles.container}><TimeDealNextTab tabNumber={activeTab} time={currentHour} /></div>
       )}
       {activeTab === 2 && (
-        <div><TimeDealNextTab tabNumber={activeTab} time={currentHour+1} /></div>
+        <div className={styles.container}><TimeDealNextTab tabNumber={activeTab} time={currentHour+1} /></div>
       )}
     </>
   );
