@@ -1,0 +1,33 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 16px 12px 16px;
+}
+
+.heading__title {
+  display: flex;
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.heading__to_brand {
+  display: flex;
+  color: #9ca3af;
+  font-size: smaller;
+  cursor: pointer;
+}
+
+.container {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    min-height: 230px;
+}
+
+.error_text {
+    color: gray;
+    display: block;
+    margin: auto;
+}

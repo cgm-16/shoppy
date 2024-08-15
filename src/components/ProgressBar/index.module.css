@@ -1,0 +1,35 @@
+.progress_bar__container {
+  width: 100%;
+  height: 16px;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #fdba74;
+}
+
+.progress_bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-color: #f97316;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  border-radius: inherit;
+  transition: left 0.5s;
+}
+
+.progress_bar__text_box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  font-weight: bold;
+}

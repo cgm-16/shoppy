@@ -1,23 +1,22 @@
 import { Header } from "@/components";
-import { webPath } from "@/router";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./index.module.css";
 
-const TimeDeal = () => {
-  const navigate = useNavigate();
+import BrandDealSection from "@/components/sections/BrandDealSection";
+import FlashDealSection from "@/components/sections/FlashDealSection";
+import TimeDealSection from "@/components/sections/TimeDealSection";
 
-  const handleClickGoToBrandDeal = () => {
-    navigate(webPath.brandDeal());
-  };
+const TimeDeal = () => {
 
   return (
-    <div>
-      <Header title="타임딜" isBackButtonVisible={false} />
-      <button className={styles.button} onClick={handleClickGoToBrandDeal}>
-        브랜드딜 바로가기
-      </button>
-    </div>
+    <>
+      <Header title="타임특가" isBackButtonVisible={false} />
+      <div className={styles.container}>
+        <FlashDealSection />
+        <BrandDealSection />
+        <TimeDealSection />
+      </div>
+    </>
   );
 };
 
