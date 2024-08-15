@@ -15,7 +15,7 @@ export type TimeDealNextTabProps = {
   time: number;
 };
 
-export const TimeDealNextTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
+export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
   const chkHour = () => new Date().getHours();
   const [pages, setPages] = useState<TimeDealData[]>([]);
   const [pageNo, setPageNo] = useState(1);
@@ -64,7 +64,7 @@ export const TimeDealNextTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
     <>
       {isError && <Navigate to={"404"} replace />}
           {pages.map((ele) => (
-            <TimeDealCard className={styles.container__DealCard}
+            <TimeDealCard
               title={ele["title"]}
               discountedPrice={ele["discountedPrice"]}
               originalPrice={ele["originalPrice"]}

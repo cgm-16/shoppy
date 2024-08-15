@@ -27,7 +27,7 @@ export const TimeDealCard = memo(
         >
           <div className={styles.container_item}>
             <img src={image} alt={title} className={styles.product_img} />
-            <div className={styles.overlay}><div className={styles.overlay__text}>오픈 예정</div></div>
+            {!isOpen && <div className={styles.overlay}><div className={styles.overlay__text}>오픈 예정</div></div>}
           </div>
           <div className={styles.description}>
             <div className={styles.description__title}>{title}</div>

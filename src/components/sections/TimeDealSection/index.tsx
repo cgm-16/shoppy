@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import { TimeDealCurrentTab } from "@/components/TimeDealTab/indexCurrent";
-import { TimeDealNextTab } from "@/components/TimeDealTab";
+import { TimeDealTab } from "@/components/TimeDealTab";
 
 const TimeDealSection = () => {
   const chkHour = () => new Date().getHours();
@@ -51,10 +51,10 @@ const TimeDealSection = () => {
         )}
       </div>
       {activeTab === 1 && (
-        <div className={styles.container}><TimeDealNextTab tabNumber={activeTab} time={currentHour} /></div>
+        <div className={styles.container}><TimeDealTab tabNumber={activeTab} time={currentHour} /></div>
       )}
       {activeTab === 2 && (
-        <div className={styles.container}><TimeDealNextTab tabNumber={activeTab} time={currentHour+1} /></div>
+        <div className={styles.container}><TimeDealTab tabNumber={activeTab} time={currentHour+1} /></div>
       )}
     </>
   );
