@@ -6,38 +6,41 @@ export type ProgressBarProps = {
 };
 
 export const ProgressBar = memo(({ stockPercentage }: ProgressBarProps) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const elementRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                } else {
-                    setIsVisible(false);
-                }
-            },
-            {
-                threshold: 0.3,
-            }
-        );
-
-        if (elementRef.current) {
-            observer.observe(elementRef.current);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
         }
-
-        return () => {
-            if (elementRef.current) {
-                observer.unobserve(elementRef.current);
-            }
-        };
-    }, []);
-
-    return (
-        <div ref={elementRef} className={styles.progress_bar__container}>
-            <div className={styles.progress_bar} style={{left: isVisible ? `${stockPercentage-100}%` : "-100%"}} />
-            <div className={styles.progress_bar__text_box}>{stockPercentage}%</div>
-        </div>
+      },
+      {
+        threshold: 0.3,
+      }
     );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div ref={elementRef} className={styles.progress_bar__container}>
+      <div
+        className={styles.progress_bar}
+        style={{ left: isVisible ? `${stockPercentage - 100}%` : "-100%" }}
+      />
+      <div className={styles.progress_bar__text_box}>{stockPercentage}%</div>
+    </div>
+  );
 });

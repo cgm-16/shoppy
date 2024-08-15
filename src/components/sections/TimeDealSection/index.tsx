@@ -1,6 +1,5 @@
 import styles from "./index.module.css";
 import { useEffect, useState } from "react";
-import { TimeDealCurrentTab } from "@/components/TimeDealTab/indexCurrent";
 import { TimeDealTab } from "@/components/TimeDealTab";
 
 const TimeDealSection = () => {
@@ -39,11 +38,17 @@ const TimeDealSection = () => {
       <div className={styles.heading}>
         {tabs(currentHour) === 2 ? (
           <>
-            <div className={styles.heading__button} onClick={() => setActiveTab(1)}>
+            <div
+              className={styles.heading__button}
+              onClick={() => setActiveTab(1)}
+            >
               {parseHour(currentHour)}
             </div>
-            <div className={styles.heading__button} onClick={() => setActiveTab(2)}>
-              {parseHour(currentHour+1)}
+            <div
+              className={styles.heading__button}
+              onClick={() => setActiveTab(2)}
+            >
+              {parseHour(currentHour + 1)}
             </div>
           </>
         ) : (
@@ -51,10 +56,14 @@ const TimeDealSection = () => {
         )}
       </div>
       {activeTab === 1 && (
-        <div className={styles.container}><TimeDealTab tabNumber={activeTab} time={currentHour} /></div>
+        <div className={styles.container}>
+          <TimeDealTab tabNumber={activeTab} time={currentHour} />
+        </div>
       )}
       {activeTab === 2 && (
-        <div className={styles.container}><TimeDealTab tabNumber={activeTab} time={currentHour+1} /></div>
+        <div className={styles.container}>
+          <TimeDealTab tabNumber={activeTab} time={currentHour + 1} />
+        </div>
       )}
     </>
   );

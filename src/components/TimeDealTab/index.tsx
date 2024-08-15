@@ -1,4 +1,3 @@
-import styles from "./index.module.css";
 import {
   isRandomServerErrorType,
   TimeDealData,
@@ -42,9 +41,10 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
         setPages((prev) => prev.concat(res.itemList));
         if (res.isLastPage) setStop(true);
         setPageNo(pageNo + 1);
+        setIsLoaded(false);
       });
     }
-  }, [isLoaded]);
+  }, [isLoaded, pageNo, stop]);
 
   const getMoreItem = () => {
     setIsLoaded(true);
@@ -54,7 +54,7 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
     observer.unobserve(entry.target);
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
-      await getMoreItem();
+      getMoreItem();
 
       observer.observe(entry.target);
     }
@@ -63,20 +63,19 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
   return (
     <>
       {isError && <Navigate to={"404"} replace />}
-          {pages.map((ele) => (
-            <TimeDealCard
-              title={ele["title"]}
-              discountedPrice={ele["discountedPrice"]}
-              originalPrice={ele["originalPrice"]}
-              discountRate={ele["discountRate"]}
-              image={ele["image"]}
-              isOpen={
-                tabNumber === 1 || (tabNumber === 2 && chkHour() - time === 1)
-              }
-            />
-          ))}
-          <div ref={refNext}></div>
-
+      {pages.map((ele) => (
+        <TimeDealCard
+          title={ele["title"]}
+          discountedPrice={ele["discountedPrice"]}
+          originalPrice={ele["originalPrice"]}
+          discountRate={ele["discountRate"]}
+          image={ele["image"]}
+          isOpen={
+            tabNumber === 1 || (tabNumber === 2 && chkHour() - time === 1)
+          }
+        />
+      ))}
+      <div ref={refNext}></div>
     </>
   );
 };
