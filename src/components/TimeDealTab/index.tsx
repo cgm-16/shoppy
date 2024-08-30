@@ -26,7 +26,9 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
     pageParam: number
   ): Promise<TimeDealResponse | RandomServerError> => {
     const res = await fetch(
-      `https://assignment-front.ilevit.com/deals/time-deal?page=${pageParam}&time=next`
+      `https://assignment-front.ilevit.com/deals/time-deal?page=${pageParam}&time=${
+        tabNumber === 1 ? "current" : "next"
+      }`
     );
     return res.json();
   };

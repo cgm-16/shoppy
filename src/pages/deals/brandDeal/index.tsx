@@ -8,10 +8,7 @@ import {
   isRandomServerErrorType,
   RandomServerError,
 } from "@/types/responseDataTypes";
-import {
-  useInfiniteQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { useIntersect } from "@/components/InfiniteScroll";
 
@@ -24,7 +21,7 @@ const BrandDeal = () => {
     pageParam: number;
   }): Promise<BrandDealResponse | RandomServerError> => {
     const res = await fetch(
-      "https://assignment-front.ilevit.com/deals/brand-deal?page="+pageParam
+      "https://assignment-front.ilevit.com/deals/brand-deal?page=" + pageParam
     );
     return res.json();
   };
@@ -44,7 +41,9 @@ const BrandDeal = () => {
     queryKey: ["brandDealInf"],
     queryFn: (pageParam) => fetchBrandDeals(pageParam),
     initialData: () => {
-      const firstPageData = queryClient.getQueryData<BrandDealResponse>(["brandDeal"]);
+      const firstPageData = queryClient.getQueryData<BrandDealResponse>([
+        "brandDeal",
+      ]);
       if (firstPageData) {
         return {
           pages: [firstPageData],
@@ -53,7 +52,9 @@ const BrandDeal = () => {
       }
       return undefined;
     },
-    initialPageParam: queryClient.getQueryData<BrandDealResponse>(["brandDeal"]) ? 2 : 1,
+    initialPageParam: queryClient.getQueryData<BrandDealResponse>(["brandDeal"])
+      ? 2
+      : 1,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (isRandomServerErrorType(lastPage) || lastPage.isLastPage) {
         return undefined;
@@ -98,22 +99,26 @@ const BrandDeal = () => {
           <div ref={refPrev}>
             {isFetching && !isFetchingPreviousPage ? "Fetching..." : null}
           </div>
-          {data?.pages.map((group, i) => (
-            <React.Fragment key={i}>
-              {!isRandomServerErrorType(group) &&
-                (group as BrandDealResponse).itemList.map((ele: BrandDealData) => (
-                  <BrandProductHorizontalCard
-                    key={ele["id"]}
-                    title={ele["title"]}
-                    discountedPrice={ele["discountedPrice"]}
-                    originalPrice={ele["originalPrice"]}
-                    stockPercentage={ele["stockPercentage"]}
-                    image={ele["image"]}
-                    discountEndDate={ele["discountEndDate"]}
-                  />
-                ))}
-            </React.Fragment>
-          ))}
+          <div className={styles.container}>
+            {data?.pages.map((group, i) => (
+              <React.Fragment key={i}>
+                {!isRandomServerErrorType(group) &&
+                  (group as BrandDealResponse).itemList.map(
+                    (ele: BrandDealData) => (
+                      <BrandProductHorizontalCard
+                        key={ele["id"]}
+                        title={ele["title"]}
+                        discountedPrice={ele["discountedPrice"]}
+                        originalPrice={ele["originalPrice"]}
+                        stockPercentage={ele["stockPercentage"]}
+                        image={ele["image"]}
+                        discountEndDate={ele["discountEndDate"]}
+                      />
+                    )
+                  )}
+              </React.Fragment>
+            ))}
+          </div>
           <div ref={refNext}>
             {isFetching && !isFetchingNextPage ? "Fetching..." : null}
           </div>

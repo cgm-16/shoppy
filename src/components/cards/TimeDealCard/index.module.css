@@ -6,6 +6,7 @@
   width: 40%;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 6px;
+  margin: auto;
 }
 
 .container_item {

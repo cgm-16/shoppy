@@ -26,12 +26,12 @@ export type BrandDealResponse = {
 }
 
 export type TimeDealData = {
-    "id": number;
-    "title": string;
-    "originalPrice": number;
-    "discountedPrice": number;
-    "discountRate": number;
-    "image": string;
+    id: number;
+    title: string;
+    originalPrice: number;
+    discountedPrice: number;
+    discountRate: number;
+    image: string;
 }
 
 export type TimeDealResponse = {
