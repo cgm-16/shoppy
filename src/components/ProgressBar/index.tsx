@@ -7,16 +7,12 @@ export type ProgressBarProps = {
 
 export const ProgressBar = memo(({ stockPercentage }: ProgressBarProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       {
         threshold: 0.3,
@@ -26,13 +22,7 @@ export const ProgressBar = memo(({ stockPercentage }: ProgressBarProps) => {
     if (elementRef.current) {
       observer.observe(elementRef.current);
     }
-
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
-    };
-  }, []);
+  });
 
   return (
     <div ref={elementRef} className={styles.progress_bar__container}>

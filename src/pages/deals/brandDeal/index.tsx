@@ -55,13 +55,13 @@ const BrandDeal = () => {
     initialPageParam: queryClient.getQueryData<BrandDealResponse>(["brandDeal"])
       ? 2
       : 1,
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
       if (isRandomServerErrorType(lastPage) || lastPage.isLastPage) {
         return undefined;
       }
       return (lastPageParam as number) + 1;
     },
-    getPreviousPageParam: (firstPage, allPages, firstPageParam) => {
+    getPreviousPageParam: (firstPage, _allPages, firstPageParam) => {
       if (
         isRandomServerErrorType(firstPage) ||
         (firstPageParam as number) <= 1

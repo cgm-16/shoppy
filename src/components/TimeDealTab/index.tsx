@@ -46,7 +46,7 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
         setIsLoaded(false);
       });
     }
-  }, [isLoaded, pageNo, stop]);
+  });
 
   const getMoreItem = () => {
     setIsLoaded(true);
