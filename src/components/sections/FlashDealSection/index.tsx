@@ -13,7 +13,7 @@ const FlashDealSection = () => {
     LureDealResponse | RandomServerError
   > => {
     const res = await fetch(
-      "https://assignment-front.ilevit.com/deals/lure-deal"
+      "https://shopping-db-ori.vercel.app/lure-deal"
     );
     return res.json();
   };

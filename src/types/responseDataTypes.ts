@@ -20,10 +20,10 @@ export type BrandDealData = {
   discountEndDate: string;
 };
 
-export type BrandDealResponse = {
+export type BrandDealResponse = Array<{
     itemList: BrandDealData[];
     isLastPage: boolean;
-}
+}>
 
 export type TimeDealData = {
     id: number;
@@ -34,10 +34,10 @@ export type TimeDealData = {
     image: string;
 }
 
-export type TimeDealResponse = {
+export type TimeDealResponse = Array<{
     itemList: TimeDealData[];
     isLastPage: boolean;
-}
+}>
 
 export type RandomServerError = {
   error: string;

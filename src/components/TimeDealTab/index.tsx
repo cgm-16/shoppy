@@ -17,7 +17,7 @@ export type TimeDealNextTabProps = {
 export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
   const chkHour = () => new Date().getHours();
   const [pages, setPages] = useState<TimeDealData[]>([]);
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stop, setStop] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -26,9 +26,7 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
     pageParam: number
   ): Promise<TimeDealResponse | RandomServerError> => {
     const res = await fetch(
-      `https://assignment-front.ilevit.com/deals/time-deal?page=${pageParam}&time=${
-        tabNumber === 1 ? "current" : "next"
-      }`
+      `https://shopping-db-ori.vercel.app/api/time-deal-${tabNumber === 1 ? "current" : "next"}?_start=${pageParam}_limit=1`
     );
     return res.json();
   };
@@ -40,8 +38,8 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
           setIsError(true);
           return;
         }
-        setPages((prev) => prev.concat(res.itemList));
-        if (res.isLastPage) setStop(true);
+        setPages((prev) => prev.concat(res[0].itemList));
+        if (res[0].isLastPage) setStop(true);
         setPageNo(pageNo + 1);
         setIsLoaded(false);
       });
@@ -67,6 +65,7 @@ export const TimeDealTab = ({ tabNumber, time }: TimeDealNextTabProps) => {
       {isError && <Navigate to={"404"} replace />}
       {pages.map((ele) => (
         <TimeDealCard
+          key={ele["id"]}
           title={ele["title"]}
           discountedPrice={ele["discountedPrice"]}
           originalPrice={ele["originalPrice"]}

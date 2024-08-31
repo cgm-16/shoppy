@@ -14,6 +14,7 @@ import { useIntersect } from "@/components/InfiniteScroll";
 
 const BrandDeal = () => {
   const queryClient = useQueryClient();
+  const firstPageData = () => queryClient.getQueryState<BrandDealResponse>(["brandDeal"])?.data;
 
   const fetchBrandDeals = async ({
     pageParam,
@@ -21,7 +22,7 @@ const BrandDeal = () => {
     pageParam: number;
   }): Promise<BrandDealResponse | RandomServerError> => {
     const res = await fetch(
-      "https://assignment-front.ilevit.com/deals/brand-deal?page=" + pageParam
+      `https://shopping-db-ori.vercel.app/brand-deal?_start=${pageParam}&_limit=1`
     );
     return res.json();
   };
@@ -39,24 +40,19 @@ const BrandDeal = () => {
     isFetchingPreviousPage,
   } = useInfiniteQuery({
     queryKey: ["brandDealInf"],
-    queryFn: (pageParam) => fetchBrandDeals(pageParam),
+    queryFn: fetchBrandDeals,
     initialData: () => {
-      const firstPageData = queryClient.getQueryData<BrandDealResponse>([
-        "brandDeal",
-      ]);
-      if (firstPageData) {
+      const data = firstPageData();
+      if (data) {
         return {
-          pages: [firstPageData],
-          pageParams: [1],
-        };
+          pageParams: [0],
+          pages: [data]
+        }
       }
-      return undefined;
     },
-    initialPageParam: queryClient.getQueryData<BrandDealResponse>(["brandDeal"])
-      ? 2
-      : 1,
+    initialPageParam: 0,
     getNextPageParam: (lastPage, _allPages, lastPageParam) => {
-      if (isRandomServerErrorType(lastPage) || lastPage.isLastPage) {
+      if (isRandomServerErrorType(lastPage) || lastPage[0].isLastPage) {
         return undefined;
       }
       return (lastPageParam as number) + 1;
@@ -103,7 +99,7 @@ const BrandDeal = () => {
             {data?.pages.map((group, i) => (
               <React.Fragment key={i}>
                 {!isRandomServerErrorType(group) &&
-                  (group as BrandDealResponse).itemList.map(
+                  (group as BrandDealResponse)[0].itemList.map(
                     (ele: BrandDealData) => (
                       <BrandProductHorizontalCard
                         key={ele["id"]}

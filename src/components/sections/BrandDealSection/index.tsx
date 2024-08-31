@@ -15,7 +15,7 @@ const BrandDealSection = () => {
 
   const fetchBrandDeals = async (): Promise<BrandDealResponse> => {
     const res = await fetch(
-      "https://assignment-front.ilevit.com/deals/brand-deal?page=1"
+      "https://shopping-db-ori.vercel.app/brand-deal?_start=0&_limit=1"
     );
     return res.json();
   };
@@ -42,14 +42,14 @@ const BrandDealSection = () => {
       ) : isError || data === undefined || isRandomServerErrorType(data)  ? (
         <div className={styles.error_text}>로딩을 하지 못했습니다.</div>
       ) : (
-          data.itemList.map((ele: BrandDealData) => (
+          data[0].itemList.map((ele: BrandDealData) => (
             <BrandProductVerticalCard
               key={ele["id"]}
               title={ele["title"]}
               discountedPrice={ele["discountedPrice"]}
               discountRate={ele["discountRate"]}
               image={ele["image"]}
-              discountEndDate={ele["discountEndDate"]}
+              discountEndDate={new Date(Date.now() + Math.floor(2*60*60*1000 * Math.random())).toISOString()}
             />
           ))
         )}
