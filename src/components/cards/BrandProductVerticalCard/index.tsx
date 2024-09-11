@@ -26,14 +26,14 @@ export const BrandProductVerticalCard = memo(
     return (
       <div
         className={styles.container}
-        style={{ cursor: timeLeft !== 0 ? "pointer" : "not-allowed" }}
+        style={{ cursor: timeLeft <= 1 ? "not-allowed" : "pointer" }}
       >
         <div className={styles.container_item}>
           <img src={image} alt={title} className={styles.product_img} />
         </div>
         <div className={styles.description}>
           <div>
-            {timeLeft === 0 ? (
+            {timeLeft <= 1 ? (
               <span className={styles.description__timer}>할인 종료</span>
             ) : (
               <span className={styles.description__timer}>
