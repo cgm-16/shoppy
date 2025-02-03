@@ -26,7 +26,7 @@ const BrandDealSection = () => {
   });
 
   return (
-    <>
+    <section>
       <div className={styles.heading}>
         <div className={styles.heading__title}>오늘의 브랜드딜</div>
         <div
@@ -54,7 +54,7 @@ const BrandDealSection = () => {
           ))
         )}
       </div>
-    </>
+    </section>
   );
 };
 

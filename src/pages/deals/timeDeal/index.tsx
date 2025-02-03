@@ -7,13 +7,14 @@ import FlashDealSection from "@/components/sections/FlashDealSection";
 import TimeDealSection from "@/components/sections/TimeDealSection";
 
 const TimeDeal = () => {
-
   return (
     <>
       <Header title="타임특가" isBackButtonVisible={false} />
       <div className={styles.container}>
-        <FlashDealSection />
-        <BrandDealSection />
+        <div>
+          <FlashDealSection />
+          <BrandDealSection />
+        </div>
         <TimeDealSection />
       </div>
     </>

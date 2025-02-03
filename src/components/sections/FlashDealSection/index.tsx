@@ -24,7 +24,7 @@ const FlashDealSection = () => {
   });
 
   return (
-    <>
+    <section>
       <div className={styles.heading}>
         <div className={styles.heading__title}>오늘만 이 가격, 순삭특가!</div>
       </div>
@@ -46,7 +46,7 @@ const FlashDealSection = () => {
           ))
         )}
       </div>
-    </>
+    </section>
   );
 };
 

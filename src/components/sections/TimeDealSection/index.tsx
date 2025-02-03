@@ -34,7 +34,7 @@ const TimeDealSection = () => {
   };
 
   return (
-    <>
+    <section>
       <div className={styles.heading}>
         {tabs(currentHour) === 2 ? (
           <>
@@ -65,7 +65,7 @@ const TimeDealSection = () => {
           <TimeDealTab tabNumber={activeTab} time={currentHour + 1} />
         </div>
       )}
-    </>
+    </section>
   );
 };
 

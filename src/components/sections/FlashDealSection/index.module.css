@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 16px 16px 12px 16px;
-  background-color: #f97316;
+  background-color: #75AAF0;
 }
 
 .heading__title {
@@ -23,8 +23,8 @@
     display: flex;
     gap: 12px;
     padding: 12px 16px;
-    overflow-x: auto;
-    background-color: #f97316;
+    overflow-x: scroll;
+    background-color: #75AAF0;
     min-height: 230px;
 }
 

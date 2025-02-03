@@ -18,4 +18,7 @@
     justify-content: space-around;
     min-width: 120px;
     overflow-y: auto;
+    gap: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
   }

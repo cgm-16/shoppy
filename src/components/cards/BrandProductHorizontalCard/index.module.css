@@ -51,7 +51,7 @@
 .product_img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 1rem;
   border: 1px ridge #f3f4f6;
 }
