@@ -13,9 +13,17 @@
 
 .heading__to_brand {
   display: flex;
-  color: #9ca3af;
+  color: #999ba0;
   font-size: smaller;
   cursor: pointer;
+  padding: 3px 10px 3px 10px;
+  border: 1px solid #999ba0;
+  border-radius: 5px;
+}
+
+.heading__to_brand:hover {
+  color: #75AAF0;
+  border-color: #75AAF0;
 }
 
 .container {

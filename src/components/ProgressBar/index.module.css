@@ -4,7 +4,7 @@
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
-  background-color: #fdba74;
+  background-color: #f6602d;
 }
 
 .progress_bar {
@@ -12,7 +12,7 @@
   height: 100%;
   width: 100%;
   content: "";
-  background-color: #f97316;
+  background-color: #e5302d;
   top: 0;
   bottom: 0;
   left: -100%;
