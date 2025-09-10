@@ -84,7 +84,7 @@
   border-radius: 1rem;
   font-size: large;
   font-weight: bold;
-  z-index: 999;
+  z-index: 700;
 }
 
 .overlay__text {
