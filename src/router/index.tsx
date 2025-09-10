@@ -44,8 +44,7 @@ const routes = [
       { index: true, element: <Navigate to={webPath.timeDeal()} replace /> },
       { path: webPath.timeDeal(), element: <TimeDeal /> },
       { path: webPath.brandDeal(), element: <BrandDeal /> },
-      { path: webPath.notFound(), element: <NotFound /> },
-      { path: "*", element: <Navigate to={webPath.notFound()} replace /> }
+      { path: "*", element: <NotFound /> }
     ],
   },
 ];
