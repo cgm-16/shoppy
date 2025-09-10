@@ -4,28 +4,27 @@ import {
   ScrollRestoration,
   createBrowserRouter,
 } from "react-router-dom";
-import { TimeDeal, BrandDeal } from "@/pages";
-import { Suspense } from "react";
+import { TimeDeal, BrandDeal, NotFound } from "@/pages";
+import { Suspense, type ReactNode } from "react";
 
 export const webPath = {
-  timeDeal: () => "/deals/time-deal",
-  brandDeal: () => "/deals/brand-deal",
+  timeDeal: () => "/time-deal",
+  brandDeal: () => "/brand-deal",
+  notFound: () => "/not-found"
 };
 
-type MainLayoutProps = {
-  children: React.ReactNode;
-};
+type MainLayoutProps = { children: ReactNode };
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+function MainLayout({ children }: MainLayoutProps) {
   return children;
-};
+}
 
 const Root = () => {
   return (
     <MainLayout>
       <Suspense
         fallback={
-          <div className="h-full w-full flex items-center justify-center">
+          <div>
             로딩중
           </div>
         }
@@ -38,14 +37,15 @@ const Root = () => {
 };
 
 const routes = [
-  { path: "*", element: <div>404 Not Found</div> },
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Navigate to={webPath.timeDeal()} replace /> },
+      { index: true, element: <Navigate to={webPath.timeDeal()} replace /> },
       { path: webPath.timeDeal(), element: <TimeDeal /> },
       { path: webPath.brandDeal(), element: <BrandDeal /> },
+      { path: webPath.notFound(), element: <NotFound /> },
+      { path: "*", element: <Navigate to={webPath.notFound()} replace /> }
     ],
   },
 ];
