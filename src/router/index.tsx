@@ -9,8 +9,7 @@ import { Suspense, type ReactNode } from "react";
 
 export const webPath = {
   timeDeal: () => "/time-deal",
-  brandDeal: () => "/brand-deal",
-  notFound: () => "/not-found"
+  brandDeal: () => "/brand-deal"
 };
 
 type MainLayoutProps = { children: ReactNode };
