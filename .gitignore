@@ -23,9 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-
-
-.pnp.*
+# Yarn zero-install
 .yarn/*
 !.yarn/cache
 !.yarn/patches
