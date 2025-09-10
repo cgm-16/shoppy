@@ -1,9 +1,10 @@
-# Shopping Module
+# Shoppy
 
-#### [서비스 링크](https://shopping-module.vercel.app)
+#### [서비스 링크](https://ori-shoppy.vercel.app)
 
 ## 간단 설명
-- 쇼핑몰 클론 프로젝트
+
+- 간단한 가상 쇼핑몰 구현하기
 - 무한 스크롤 구현, 타이머 기능 개발
 
 ## 기술 스택

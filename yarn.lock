@@ -2412,9 +2412,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shopping-module@workspace:.":
+"shoppy@workspace:.":
   version: 0.0.0-use.local
-  resolution: "shopping-module@workspace:."
+  resolution: "shoppy@workspace:."
   dependencies:
     "@tanstack/eslint-plugin-query": "npm:^5.51.15"
     "@tanstack/react-query": "npm:^5.51.23"
